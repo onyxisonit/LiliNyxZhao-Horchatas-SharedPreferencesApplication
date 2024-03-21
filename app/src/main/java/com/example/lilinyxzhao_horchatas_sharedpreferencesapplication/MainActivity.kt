@@ -37,9 +37,6 @@ class MainActivity : AppCompatActivity() {
         }
         val savedText = sharedPreferences.getString(PREF_TEXT_KEY, "")
 
-//        val savedImage = sharedPreferences.getInt(PREF_IMG_KEY, 0)
-
-        editText.setText(savedText)
     val encodedImage = sharedPreferences.getString("encodedImage", "DEFAULT")
 
     if (encodedImage != "DEFAULT") {
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
         imageView.setImageBitmap(decodedImage)
     }
-
+    editText.setText(savedText)
     }
     override fun onDestroy() {
         super.onDestroy()
@@ -62,11 +59,11 @@ class MainActivity : AppCompatActivity() {
             val imageBytes = byteArrayOutputStream.toByteArray()
             val encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
             editor.putString("encodedImage", encodedImage)
-            editor.apply()
+            editor.commit()
         }
 
         editor.putString(PREF_TEXT_KEY, editText.text.toString())
-        editor.apply()
+        editor.commit()
     }
 }
 

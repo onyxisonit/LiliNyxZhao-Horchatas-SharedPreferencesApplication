@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.lilinyxzhao_horchatas_sharedpreferencesapplication"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
